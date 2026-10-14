@@ -6,7 +6,7 @@ import React from 'react'
 export default function Home() {
   return (
     <>
-      <header className="min-h-dvh pt-24 grid grid-cols-2 gap-0 px-4 lg:px-[4%] xl:px-[6%]">
+      <header className="min-h-dvh py-24 grid grid-cols-2 gap-0 px-4 lg:px-[4%] xl:px-[6%] inset-0 -z-10 bg-[linear-gradient(to_right,rgba(229,231,235,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,0.4)_1px,transparent_1px),radial-gradient(circle_500px_at_10%_100%,rgba(139,92,246,0.2),transparent)] bg-size-[48px_48px,48px_48px,100%_100%,100%_100%]">
         <div className="min-h-[90dvh] w-full flex flex-col justify-center items-start gap-4 ">
           <p className="text-xs border-2 text-[#8F43E2] w-min text-nowrap font-semibold border-primary rounded-full p-2">THE OFFICIAL DIGITAL PEDIGREE REGISTRY</p>
           <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold font-antonio">Register Your Dog.  <br />
