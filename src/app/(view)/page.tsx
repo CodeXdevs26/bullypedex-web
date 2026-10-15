@@ -1,4 +1,5 @@
 import AboutUs from '@/components/moon/about-us'
+import Database from '@/components/moon/database'
 import { Button } from '@/components/ui/button'
 import { ArrowDownLeftIcon, ArrowUpRight, DownloadIcon, SearchIcon } from 'lucide-react'
 import Image from 'next/image'
@@ -68,6 +69,7 @@ export default function Home() {
       </header>
       <main className="h-[300dvh] w-full">
         <AboutUs />
+        <Database />
       </main>
     </>)
 }
