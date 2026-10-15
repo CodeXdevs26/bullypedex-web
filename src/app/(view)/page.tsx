@@ -1,12 +1,12 @@
+import AboutUs from '@/components/moon/about-us'
 import { Button } from '@/components/ui/button'
 import { ArrowDownLeftIcon, ArrowUpRight, DownloadIcon, SearchIcon } from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
 
 export default function Home() {
   return (
     <>
-      <header className="min-h-dvh py-24 grid grid-cols-2 gap-0 px-4 lg:px-[4%] xl:px-[6%] inset-0 -z-10 bg-[linear-gradient(to_right,rgba(229,231,235,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,0.4)_1px,transparent_1px),radial-gradient(circle_500px_at_10%_100%,rgba(139,92,246,0.2),transparent)] bg-size-[48px_48px,48px_48px,100%_100%,100%_100%]">
+      <header className="min-h-dvh relative py-24 grid grid-cols-2 gap-0 px-4 lg:px-[4%] xl:px-[6%] inset-0 -z-10 bg-[linear-gradient(to_right,rgba(229,231,235,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,0.4)_1px,transparent_1px),radial-gradient(circle_500px_at_10%_100%,rgba(139,92,246,0.2),transparent)] bg-size-[48px_48px,48px_48px,100%_100%,100%_100%]">
         <div className="min-h-[90dvh] w-full flex flex-col justify-center items-start gap-4 ">
           <p className="text-xs border-2 text-[#8F43E2] w-min text-nowrap font-semibold border-primary rounded-full p-2">THE OFFICIAL DIGITAL PEDIGREE REGISTRY</p>
           <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold font-antonio">Register Your Dog.  <br />
@@ -54,7 +54,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative">
-            <div className="absolute -top-1/3 right-0 flex items-center gap-2 text-primary">
+            <div className="absolute -top-1/3 right-0 flex items-center gap-2 text-primary z-10">
               <ArrowDownLeftIcon />
               <p className="font-serif text-lg italic">
                 Scan to<br />
@@ -64,7 +64,10 @@ export default function Home() {
             <Image src="/qr.png" height={448} width={448} alt="Dog" className="h-50 w-50 object-contain" />
           </div>
         </div>
+        <Image src="/icon.webp" alt="Icon" height={2000} width={1333} className="h-[90dvh] opacity-10 -z-10 w-auto object-contain  absolute bottom-0 right-0" />
       </header>
-      <main className="h-[300dvh] w-full"></main>
+      <main className="h-[300dvh] w-full">
+        <AboutUs />
+      </main>
     </>)
 }
