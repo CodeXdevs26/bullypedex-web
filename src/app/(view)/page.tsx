@@ -1,5 +1,9 @@
 import AboutUs from '@/components/moon/about-us'
 import Database from '@/components/moon/database'
+import FAQ from '@/components/moon/faq'
+import HereToHelp from '@/components/moon/here-to-help'
+import Package from '@/components/moon/package'
+import Testimonials from '@/components/moon/testimonials'
 import { Button } from '@/components/ui/button'
 import { ArrowDownLeftIcon, ArrowUpRight, DownloadIcon, SearchIcon } from 'lucide-react'
 import Image from 'next/image'
@@ -67,9 +71,13 @@ export default function Home() {
         </div>
         <Image src="/icon.webp" alt="Icon" height={2000} width={1333} className="h-[90dvh] opacity-10 -z-10 w-auto object-contain  absolute bottom-0 right-0" />
       </header>
-      <main className="h-[300dvh] w-full">
+      <main className=" w-full">
         <AboutUs />
         <Database />
+        <Package />
+        <Testimonials />
+        <FAQ />
       </main>
+      <HereToHelp />
     </>)
 }
