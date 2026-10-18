@@ -60,7 +60,8 @@ export default function Navbar() {
                 )}
             </div>
             <div className="flex items-center gap-2">
-                <Button variant="ghost" size="icon-lg" asChild><Link href="/profile"><User2Icon /></Link></Button>
+                {/* <Button variant="ghost" size="icon-lg" asChild><Link href="/profile"><User2Icon /></Link></Button> */}
+                <Button variant="ghost" size="lg" asChild><Link href="#">Sign in</Link></Button>
                 <Button size="lg" asChild><Link href="#"><DownloadIcon />Download App</Link></Button>
             </div>
         </nav>

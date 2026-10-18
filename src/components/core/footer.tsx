@@ -11,7 +11,7 @@ const links = [
             { label: "Home", href: "/" },
             { label: "About Us", href: "/about" },
             { label: "Testimonials", href: "/testimonials" },
-            { label: "Register a Dog", href: "/register" },
+            { label: "Register a Dog", href: "/registry" },
             { label: "Faq", href: "/faq" }
         ]
     },
@@ -19,8 +19,8 @@ const links = [
         title: "Other pages",
         items: [
             { label: "Search Pedigree", href: "/database" },
-            { label: "Marketplace", href: "/market" },
-            { label: "Event", href: "/event" },
+            { label: "Marketplace", href: "/marketplace" },
+            { label: "Event", href: "/events" },
             { label: "Resources", href: "/resources" },
             { label: "Contact Us", href: "/contact" }
         ]

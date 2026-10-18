@@ -1,14 +1,15 @@
 import AnimatedTabMotion from '@/components/extra/animated-tabs'
 import AuthGuard from '@/components/extra/auth-guard'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
 import { Label } from '@/components/ui/label'
 import { Select, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
-import { ArrowDown, SearchIcon } from 'lucide-react'
+import { ArrowDown, ArrowRightIcon, BookmarkIcon, MapPinIcon, SearchIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -124,30 +125,36 @@ export default function Page() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
                             {dogos.map((doggo, index) => (
                                 // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                                <Card key={index} className="py-4">
-                                    <CardHeader className="px-4">
+                                <Card key={index} className="py-4 pt-0">
+                                    <CardHeader className="px-0 relative">
+                                        <Badge className="flex items-center gap-2 absolute top-4 left-4" variant="secondary">
+                                            <span className="size-2 bg-green-500 rounded-full" />
+                                            OCT 14–16, 2026
+                                        </Badge>
                                         <Link href={`/marketplace/${doggo.reg}`} >
-                                            <Image src={doggo.image} alt={doggo.name} height={240 * 6} width={200 * 6} className="rounded-xl w-full aspect-video object-cover" />
+                                            <Image src={doggo.image} alt={doggo.name} height={240 * 6} width={200 * 6} className="rounded-xl rounded-b-none w-full aspect-video object-cover" />
                                         </Link>
+
+                                        <p className="left-2 bottom-2 absolute text-background font-semibold text-xs flex items-center gap-1"><MapPinIcon className="size-4 text-green-300" /> Orlando Convention Center, FL</p>
                                     </CardHeader>
                                     <CardContent className="px-4">
                                         <div className="flex items-center justify-between">
                                             <Link href={`/marketplace/${doggo.reg}`} >
-                                                <CardTitle className="hover:underline">
-                                                    {doggo.name}
+                                                <CardTitle className="hover:underline text-lg font-semibold">
+                                                    Bully Pedex National Specialty
                                                 </CardTitle>
                                             </Link>
                                         </div>
                                         <CardDescription>
-                                            {doggo.desc}
+                                            $75 entry • ABKC Sanctioned
                                         </CardDescription>
-                                        <div className="flex items-center justify-between">
-                                            <CardDescription className="items-center gap-2 flex">
-                                                Dallas, TX
-                                            </CardDescription>
-                                            <span className="font-bold text-primary text-lg">$4,200</span>
-                                        </div>
                                     </CardContent>
+                                    <CardFooter>
+                                        <CardAction className="flex items-center justify-between gap-2 w-full">
+                                            <Button className="flex-1" asChild><Link href={`/events/${doggo.reg}`}>View Event <ArrowRightIcon /></Link></Button>
+                                            <Button variant="outline" size="icon"><BookmarkIcon /></Button>
+                                        </CardAction>
+                                    </CardFooter>
                                 </Card>
                             ))}
                         </div>
