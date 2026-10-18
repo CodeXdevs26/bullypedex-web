@@ -51,7 +51,7 @@ const STATS = [
 export default function AboutUs() {
     return (
         <section className="px-4 py-16 lg:px-[4%] lg:py-24 xl:px-[6%]">
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-0">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-6">
                 <Image
                     src="/doge-2.webp"
                     height={720}
