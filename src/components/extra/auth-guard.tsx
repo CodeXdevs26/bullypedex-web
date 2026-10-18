@@ -9,7 +9,7 @@ export default function AuthGuard({ children, withApp }: { children: React.React
             <DialogTrigger asChild>
                 {children}
             </DialogTrigger>
-            <DialogContent className="min-w-2xl! overflow-hidden p-0!" showCloseButton={false}>
+            <DialogContent className="lg:min-w-2xl! overflow-hidden p-0!" showCloseButton={false}>
                 <DialogHeader className="hidden">
                     <DialogTitle></DialogTitle>
                 </DialogHeader>

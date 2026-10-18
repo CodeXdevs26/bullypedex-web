@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Quote, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -52,6 +52,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
     const total = testimonials.length;
     const [current, setCurrent] = useState(0);
     const [isHovering, setIsHovering] = useState(false);
+    const touchStartX = useRef<number | null>(null);
 
     useEffect(() => {
         if (isHovering || total < 2) return;
@@ -72,15 +73,29 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
         return diff;
     };
 
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        if (touchStartX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX.current;
+        touchStartX.current = null;
+        if (Math.abs(dx) < 40) return;
+        setCurrent((prev) => (prev + (dx < 0 ? 1 : -1) + total) % total);
+    };
+
     return (
         <section
-            className={cn("relative w-full py-10", className)}
+            className={cn("relative w-full overflow-x-clip py-10", className)}
             aria-roledescription="carousel"
             aria-label="Customer testimonials"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
+            // Mouse only: touch "hover" sticks after a tap and would stop autoplay forever
+            onPointerEnter={(e) => e.pointerType === "mouse" && setIsHovering(true)}
+            onPointerLeave={() => setIsHovering(false)}
+            onTouchStart={(e) => {
+                touchStartX.current = e.touches[0].clientX;
+            }}
+            onTouchEnd={handleTouchEnd}
         >
-            <div className="relative mx-auto h-[300px] w-full overflow-hidden md:overflow-visible">
+            {/* Cards share one grid cell, so the container height = tallest card (no fixed height) */}
+            <div className="relative mx-auto grid w-full touch-pan-y grid-cols-1 overflow-hidden pt-12 pb-10 md:overflow-visible">
                 {testimonials.map((t, index) => {
                     const offset = getOffset(index);
                     const isActive = offset === 0;
@@ -97,14 +112,15 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
                             aria-hidden={!isActive}
                             onClick={() => !isActive && setCurrent(index)}
                             className={cn(
-                                "absolute left-1/2 top-12 w-[88%]  max-w-[40dvw]  md:w-[40dvw]!",
+                                "relative col-start-1 row-start-1 self-start justify-self-center",
+                                // mobile: neighbours peek ~5% at the edges; md+: neighbours overlap like before
+                                "w-[82%] max-w-md [--step:100%] md:w-[40dvw] md:max-w-none md:[--step:62%]",
                                 "transition-all duration-700 ease-in-out",
                                 isVisible ? "pointer-events-auto" : "pointer-events-none",
                                 !isActive && isVisible && "cursor-pointer"
                             )}
                             style={{
-                                transform: `translateX(calc(-50% + ${offset * 62}%)) scale(${isActive ? 1 : 0.9
-                                    })`,
+                                transform: `translateX(calc(${offset} * var(--step))) scale(${isActive ? 1 : 0.9})`,
                                 opacity: isActive ? 1 : isVisible ? 0.7 : 0,
                                 zIndex: isActive ? 30 : isVisible ? 10 : 0,
                             }}
@@ -118,35 +134,33 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
                                     isActive ? "scale-100 opacity-100" : "scale-50 opacity-0"
                                 )}
                             >
-                                <Quote
-                                    className="h-5 w-5 fill-white text-white"
-                                    aria-hidden="true"
-                                />
+                                <Quote className="h-5 w-5 fill-white text-white" aria-hidden="true" />
                             </div>
 
                             <div
                                 className={cn(
                                     "rounded-2xl bg-white transition-all duration-700",
                                     isActive
-                                        ? "px-6 pb-6 pt-7 shadow-[0_20px_60px_-15px_rgba(108,79,219,0.35)]"
-                                        : "px-5 pb-5 pt-6 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] border border-neutral-100"
+                                        ? "px-5 pb-5 pt-7 shadow-[0_20px_60px_-15px_rgba(108,79,219,0.35)] lg:px-6 lg:pb-6"
+                                        : "border border-neutral-100 px-5 pb-5 pt-6 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]"
                                 )}
                             >
                                 <p
                                     className={cn(
                                         "leading-snug transition-all duration-500",
                                         isActive
-                                            ? "text-[17px] font-normal text-neutral-900"
+                                            ? "text-base font-normal text-neutral-900 lg:text-[17px]"
                                             : "text-sm text-neutral-400"
                                     )}
                                 >
                                     {t.quote}
                                 </p>
 
+                                {/* Stacked on mobile/tablet, single row from lg (as before) */}
                                 <div
                                     className={cn(
-                                        "flex items-center justify-between gap-3",
-                                        isActive ? "mt-8" : "mt-6"
+                                        "flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between",
+                                        isActive ? "mt-6 lg:mt-8" : "mt-5 lg:mt-6"
                                     )}
                                 >
                                     <div className="flex min-w-0 items-center gap-3">
@@ -169,9 +183,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
                                             <p
                                                 className={cn(
                                                     "truncate font-semibold transition-all duration-500",
-                                                    isActive
-                                                        ? "text-base text-neutral-950"
-                                                        : "text-sm text-neutral-500"
+                                                    isActive ? "text-base text-neutral-950" : "text-sm text-neutral-500"
                                                 )}
                                             >
                                                 {t.name}
@@ -179,9 +191,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
                                             <p
                                                 className={cn(
                                                     "truncate transition-all duration-500",
-                                                    isActive
-                                                        ? "text-xs text-neutral-500"
-                                                        : "text-[11px] text-neutral-400"
+                                                    isActive ? "text-xs text-neutral-500" : "text-[11px] text-neutral-400"
                                                 )}
                                             >
                                                 {t.role}
@@ -198,7 +208,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
 
             {/* Pagination dots */}
             <div
-                className="mt-6 flex items-center justify-center gap-2"
+                className="mt-2 flex items-center justify-center gap-2"
                 role="tablist"
                 aria-label="Choose testimonial"
             >
@@ -214,9 +224,7 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
                         className={cn(
                             "h-2.5 w-2.5 rounded-full transition-all duration-300",
                             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6C4FDB] focus-visible:ring-offset-2",
-                            index === current
-                                ? "bg-[#6C4FDB]"
-                                : "bg-[#DDD8F5] hover:bg-[#C4B8F2]"
+                            index === current ? "bg-[#6C4FDB]" : "bg-[#DDD8F5] hover:bg-[#C4B8F2]"
                         )}
                     />
                 ))}
@@ -224,7 +232,6 @@ export const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
         </section>
     );
 };
-
 /* ---------- Usage ----------
 
 import { TestimonialCarousel } from "@/components/testimonial-carousel";

@@ -50,36 +50,51 @@ const dogos = [
 
 export default function Page() {
     return (
-        <main className="py-24 px-4 lg:px-[4%] xl:px-[6%]">
-            <section className="grid grid-cols-2 gap-4">
-                <div className="mt-24 space-y-8">
-                    <p className="text-xs border-2 text-[#8F43E2] w-min text-nowrap font-semibold border-primary rounded-full p-2 px-4">
+        <main className="px-4 py-24 lg:px-[4%] xl:px-[6%]">
+            <section className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2">
+                <div className="mt-8 space-y-6 text-center lg:mt-24 lg:space-y-8 lg:text-left">
+                    <p className="mx-auto w-min rounded-full border-2 border-primary p-2 px-4 text-xs font-semibold text-nowrap text-[#8F43E2] lg:mx-0">
                         Database
                     </p>
-                    <AnimatedTabMotion tabs={tabs} />
+                    <div className="flex justify-center lg:block">
+                        <AnimatedTabMotion tabs={tabs} />
+                    </div>
 
-                    <h1 className="text-xl sm:text-2xl lg:text-4xl xl:text-5xl font-bold font-antonio">Search the Bully<br />
-                        Pedigree Database</h1>
-                    <p className="text-muted-foreground">Find registered dogs, explore bloodlines, and verify
-                        pedigree information.</p>
-                </div>
-                <div className="w-full relative">
-                    <Image src="/doge-3.webp" height={960} width={1109} alt="doge-3" className="h-[60dvh] object-contain object-bottom" draggable={false} />
-                    <div className="absolute h-full w-full bg-linear-to-b from-transparent via-transparent to-background z-10 top-0 left-0"></div>
+                    <h1 className="font-antonio text-3xl font-bold sm:text-4xl xl:text-5xl">
+                        Search the Bully<br className="hidden lg:block" />{" "}
+                        Pedigree Database
+                    </h1>
+                    <p className="mx-auto max-w-md text-muted-foreground lg:mx-0 lg:max-w-none">
+                        Find registered dogs, explore bloodlines, and verify pedigree information.
+                    </p>
                 </div>
 
+                <div className="relative w-full">
+                    <Image
+                        src="/doge-3.webp"
+                        height={960}
+                        width={1109}
+                        alt="doge-3"
+                        className="h-[40dvh] w-full object-contain object-bottom sm:h-[50dvh] lg:h-[60dvh] lg:w-auto"
+                        draggable={false}
+                    />
+                    <div className="absolute top-0 left-0 z-10 h-full w-full bg-linear-to-b from-transparent via-transparent to-background" />
+                </div>
             </section>
+
             <section>
-                <div className="col-span-2 mt-4 bg-background shadow-sm p-2 rounded-lg border border-border/50 flex items-center justify-between gap-2">
-                    <InputGroup className="shadow-none outline-none! border-0! ring-0! gap-2 ">
+                {/* Search bar: stacked on mobile, one row from lg */}
+                <div className="mt-4 flex flex-col gap-2 rounded-lg border border-border/50 bg-background p-2 shadow-sm lg:flex-row lg:items-center lg:justify-between">
+                    <InputGroup className="gap-2 border-0! shadow-none ring-0! outline-none!">
                         <InputGroupInput placeholder="Search by dog name, BPKC ID or bloodline..." />
                         <InputGroupAddon>
                             <SearchIcon />
                         </InputGroupAddon>
                     </InputGroup>
-                    <div className="flex items-center gap-2">
+
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:items-center">
                         <Select>
-                            <SelectTrigger className="">
+                            <SelectTrigger className="w-full lg:w-auto">
                                 <SelectValue placeholder="Breed" />
                             </SelectTrigger>
                             <SelectContent>
@@ -90,7 +105,7 @@ export default function Page() {
                             </SelectContent>
                         </Select>
                         <Select>
-                            <SelectTrigger className="">
+                            <SelectTrigger className="w-full lg:w-auto">
                                 <SelectValue placeholder="Sex" />
                             </SelectTrigger>
                             <SelectContent>
@@ -98,59 +113,61 @@ export default function Page() {
                                 <SelectItem value="female">Female</SelectItem>
                             </SelectContent>
                         </Select>
-                        <Select>
-                            <SelectTrigger className="">
-                                <SelectValue placeholder="Registration status" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="registered">Registered</SelectItem>
-                                <SelectItem value="unregistered">Unregistered</SelectItem>
-                            </SelectContent>
-                        </Select>
-                        <Button size="lg" className="px-6">Search</Button>
+                        <div className="col-span-2 sm:col-span-1 lg:col-auto">
+                            <Select>
+                                <SelectTrigger className="w-full lg:w-auto">
+                                    <SelectValue placeholder="Registration status" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="registered">Registered</SelectItem>
+                                    <SelectItem value="unregistered">Unregistered</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                        <Button size="lg" className="col-span-2 w-full px-6 sm:col-span-3 lg:w-auto">
+                            Search
+                        </Button>
                     </div>
                 </div>
-                <p className="text-sm text-muted-foreground mt-18">
-                    125 Dogs Found
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+
+                <p className="mt-10 text-sm text-muted-foreground lg:mt-18">125 Dogs Found</p>
+
+                <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {dogos.map((doggo) => (
                         <Card key={doggo.image}>
                             <CardHeader>
-                                <Image src={doggo.image} alt={doggo.name} height={240 * 6} width={200 * 6} className="rounded-xl w-full aspect-video object-cover" />
+                                <Image
+                                    src={doggo.image}
+                                    alt={doggo.name}
+                                    height={240 * 6}
+                                    width={200 * 6}
+                                    className="aspect-video w-full rounded-xl object-cover"
+                                />
                             </CardHeader>
                             <CardContent>
                                 <div className="flex items-center justify-between">
-                                    <CardTitle>
-                                        {doggo.name}
-                                    </CardTitle>
+                                    <CardTitle>{doggo.name}</CardTitle>
                                     <AuthGuard>
-                                        <Button variant="ghost" size="icon" className="rounded-full">
+                                        <Button variant="ghost" size="icon" className="rounded-full" aria-label={`View ${doggo.name}`}>
                                             <ArrowUpRight className="size-5" />
                                         </Button>
                                     </AuthGuard>
                                 </div>
-                                <CardDescription>
-                                    {doggo.reg}
-                                </CardDescription>
-                                <CardDescription>
-                                    {doggo.desc}
-                                </CardDescription>
+                                <CardDescription>{doggo.reg}</CardDescription>
+                                <CardDescription>{doggo.desc}</CardDescription>
                                 <CardDescription className="flex items-center gap-4">
                                     <span className="flex items-center gap-2">
                                         <User2Icon className="size-4" /> {doggo.sex}
                                     </span>
-
                                     <span className="flex items-center gap-2">
                                         <CalendarIcon className="size-4" /> 12 Mar 2026
                                     </span>
                                 </CardDescription>
-
                             </CardContent>
                         </Card>
                     ))}
                 </div>
             </section>
-        </main >
+        </main>
     )
 }

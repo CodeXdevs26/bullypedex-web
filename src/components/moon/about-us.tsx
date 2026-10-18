@@ -48,56 +48,58 @@ const STATS = [
         label: "Countries"
     },
 ]
-
 export default function AboutUs() {
     return (
-        <section className=" px-0 lg:px-[4%] xl:px-[6%] py-24">
-            <div className="grid grid-cols-2 ">
-                <Image src="/doge-2.webp" height={720} width={720} alt='pitbull-2' className="object-cover aspect-square object-top rounded-[3%]" />
-                <div className="flex flex-col justify-center items-start gap-6">
-                    <p className="text-xs border-2 px-4 text-[#8F43E2] w-min text-nowrap font-semibold border-primary rounded-full p-2">About Us</p>
-                    <h2 className="text-3xl lg:text-5xl xl:text-6xl font-bold font-antonio">
-                        Everything You Need to Protect <br />
+        <section className="px-4 py-16 lg:px-[4%] lg:py-24 xl:px-[6%]">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-0">
+                <Image
+                    src="/doge-2.webp"
+                    height={720}
+                    width={720}
+                    alt="pitbull-2"
+                    className="aspect-4/3 w-full rounded-[3%] object-cover object-top sm:aspect-video lg:aspect-square"
+                />
+                <div className="flex flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left">
+                    <p className="w-min rounded-full border-2 border-primary p-2 px-4 text-xs font-semibold text-nowrap text-[#8F43E2]">About Us</p>
+                    <h2 className="font-antonio text-3xl font-bold sm:text-4xl lg:text-5xl xl:text-6xl">
+                        Everything You Need to Protect <br className="hidden lg:block" />
                         a Pedigree
                     </h2>
                     <p className="text-muted-foreground">OUR CORE FEATURES</p>
-                    <div className="w-full grid grid-cols-2 gap-6">
-                        {
-                            CARDS.map((card) => (
-                                <Card key={card.title} className="bg-[#F2F0FD]">
-                                    <CardHeader>
-                                        <div className="p-3 rounded-full bg-background w-min text-primary">
-                                            {card.icon}
-                                        </div>
-                                    </CardHeader>
-                                    <CardContent >
-                                        <CardTitle className="text-xl font-semibold">
-                                            {card.title}
-                                        </CardTitle>
-                                        <CardDescription className="text-muted-foreground text-base ">
-                                            {card.description}
-                                        </CardDescription>
-                                    </CardContent>
-                                </Card>
-                            ))
-                        }
+                    <div className="grid w-full grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:gap-6">
+                        {CARDS.map((card) => (
+                            <Card key={card.title} className="bg-[#F2F0FD]">
+                                <CardHeader>
+                                    <div className="w-min rounded-full bg-background p-3 text-primary">
+                                        {card.icon}
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <CardTitle className="text-xl font-semibold">
+                                        {card.title}
+                                    </CardTitle>
+                                    <CardDescription className="text-base text-muted-foreground">
+                                        {card.description}
+                                    </CardDescription>
+                                </CardContent>
+                            </Card>
+                        ))}
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-4 gap-4 mt-24">
-                {
-                    STATS.map((stat) => (
-                        <div className="flex items-center gap-2" key={stat.label}>
-                            <div className="bg-muted justify-center items-center p-3 rounded-full text-primary">
-                                {stat.icon}
-                            </div>
-                            <div className="">
-                                <h5 className="font-bold font-antonio text-2xl">{stat.value}</h5>
-                                <p className="text-muted-foreground text-sm">{stat.label}</p>
-                            </div>
+
+            <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 lg:mt-24 lg:grid-cols-4">
+                {STATS.map((stat) => (
+                    <div className="flex items-center gap-2" key={stat.label}>
+                        <div className="shrink-0 items-center justify-center rounded-full bg-muted p-3 text-primary">
+                            {stat.icon}
                         </div>
-                    ))
-                }
+                        <div>
+                            <h5 className="font-antonio text-xl font-bold sm:text-2xl">{stat.value}</h5>
+                            <p className="text-sm text-muted-foreground">{stat.label}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </section>
     )

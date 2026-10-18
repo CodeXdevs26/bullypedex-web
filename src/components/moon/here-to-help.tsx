@@ -10,11 +10,13 @@ export default function HereToHelp() {
     return (
         <section className="bg-linear-to-tl from-[#6a54e5ee] via-[#7a26e9] to-[#6a54e5ee] relative">
             <div
-                className="relative before:absolute grid grid-cols-2 gap-12 before:top-0 before:left-0 before:w-full w-full h-full py-24 px-0 lg:px-[8%] xl:px-[12%] 
+                className="relative before:absolute grid lg:grid-cols-2 gap-12 before:top-0 before:left-0 before:w-full w-full h-full py-24 px-4 lg:px-[8%] xl:px-[12%] 
                 before:h-full before:content-[''] before:opacity-[0.03] before:z-10 before:pointer-events-none
-                before:bg-[url('https://www.ui-layouts.com/noise.gif')]"
+                before:bg-[url('https://www.ui-layouts.com/noise.gif')]
+               
+                "
             >
-                <div className="">
+                <div className=" order-2 lg:order-1">
                     <form>
                         <FieldGroup className="grid grid-cols-2 gap-6">
                             <Field>
@@ -37,13 +39,13 @@ export default function HereToHelp() {
                         </FieldGroup>
                     </form>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-4 order-1 lg:order-2">
                     <h4 className="text-5xl font-antonio font-black text-background">We’re Here to Help</h4>
                     <p className="text-[#E1E1E1]">Have a question about registration, pedigrees, or our services? <br />
                         Get in touch with our team and we’ll be happy to assist you.</p>
                 </div>
             </div>
-            <Image src="/icon-whites.webp" alt="Icon" height={2000} width={1333} className="h-[40dvh] opacity-8 w-auto object-contain absolute bottom-0 right-0" />
+            <Image src="/icon-whites.webp" alt="Icon" height={2000} width={1333} className="h-[40dvh]  opacity-8 w-auto object-contain absolute top-0 lg:top-auto lg:bottom-0 right-0 " />
         </section >
     )
 }

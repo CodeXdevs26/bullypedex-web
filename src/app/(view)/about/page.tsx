@@ -40,7 +40,7 @@ export default function Page() {
                 <h1 className="text-5xl text-center font-antonio font-black">Who We Are</h1>
                 <p className="text-center text-muted-foreground">At the BPKC registry, our pride is rooted in our commitment to maintaining the intergrity and authenticity of every dog <br /> predigree with community-driven approach to provide exceptional services that cater to your needs</p>
                 <h2 className="text-5xl text-center font-antonio font-black">MEET THE <span className="text-primary"> TEAM</span></h2>
-                <div className="grid grid-cols-2 gap-6 w-1/2 mx-auto">
+                <div className="grid lg:grid-cols-2 gap-6 lg:w-1/2 mx-auto">
                     <Card>
                         <CardHeader className="">
                             <Image className="w-full aspect-video object-cover rounded-xl" height={1024} width={920} alt="avatar" src="https://images.unsplash.com/photo-1734830203158-f7e65ce914b3?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" unoptimized />
