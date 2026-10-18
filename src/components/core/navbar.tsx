@@ -8,13 +8,6 @@ import { DownloadIcon, User2Icon, UserIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useScrollPosition } from 'react-haiku'
 
-// Homepage
-// About Us
-// Registry
-// Database
-// Marketplace
-// Events
-// Resources
 const navs = [
     {
         label: "Homepage",

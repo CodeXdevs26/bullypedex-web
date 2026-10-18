@@ -16,7 +16,7 @@ const ITEMS = [
     },
 ];
 
-function Icon({ open }) {
+function Icon({ open }: { open: boolean }) {
     return (
         <span className="relative block h-3.5 w-3.5" aria-hidden="true">
             {/* horizontal bar (always visible) */}
@@ -30,8 +30,9 @@ function Icon({ open }) {
     );
 }
 
-export default function Accordion({ items = ITEMS }) {
-    const [openId, setOpenId] = useState(null);
+
+export default function Accordion({ items = ITEMS }: { items?: typeof ITEMS }) {
+    const [openId, setOpenId] = useState<string | null>(null);
 
     return (
 
