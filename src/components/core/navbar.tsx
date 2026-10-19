@@ -40,14 +40,14 @@ export default function Navbar() {
         <nav
             className={cn(
                 "fixed top-0 left-0 z-50 flex w-full items-center justify-between px-4 transition-all md:px-[4%] xl:px-[6%]",
-                scrolled ? "h-16 bg-background/20! backdrop-blur-sm" : "h-24"
+                scrolled ? "h-16 bg-background md:bg-background/20! backdrop-blur-sm" : "h-16 md:h-24 bg-background md:bg-transparent"
             )}
         >
             {/* Logo */}
             <Link href="/" aria-label="Home" className="shrink-0">
                 <Image
                     src="/icon.webp"
-                    className={cn("w-auto object-contain transition-all", scrolled ? "h-10 md:h-12" : "h-12 md:h-18")}
+                    className={cn("w-auto object-contain transition-all", scrolled ? "h-10 md:h-12" : "h-10 lg:h-12 md:h-18")}
                     height={54}
                     width={54 * 2}
                     alt="Logo"
@@ -88,7 +88,7 @@ export default function Navbar() {
                 {/* Mobile menu (below xl) */}
                 <Sheet>
                     <SheetTrigger asChild>
-                        <Button variant="outline" size="icon" className="xl:hidden" aria-label="Open menu">
+                        <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open menu">
                             <MenuIcon />
                         </Button>
                     </SheetTrigger>

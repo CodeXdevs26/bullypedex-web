@@ -4,6 +4,7 @@ import FAQ from '@/components/moon/faq'
 import HereToHelp from '@/components/moon/here-to-help'
 import Package from '@/components/moon/package'
 import Testimonials from '@/components/moon/testimonials'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ArrowDownLeftIcon, ArrowUpRight, DownloadIcon, SearchIcon } from 'lucide-react'
 import Image from 'next/image'
@@ -12,30 +13,31 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <>
-      <header className="relative isolate grid min-h-dvh grid-cols-1 gap-y-10 overflow-x-clip px-4 pt-28 pb-12 lg:grid-cols-2 lg:gap-0 lg:px-[4%] lg:py-24 xl:px-[6%] bg-[linear-gradient(to_right,rgba(229,231,235,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,0.4)_1px,transparent_1px),radial-gradient(circle_500px_at_10%_100%,rgba(139,92,246,0.2),transparent)] bg-size-[48px_48px,48px_48px,100%_100%,100%_100%]">
+      <header className="relative isolate grid md:min-h-dvh grid-cols-1 gap-y-4 md:gap-y-10 overflow-x-clip sm:px-4 pt-20 sm:pt-28 pb-6 sm:pb-12 lg:grid-cols-2 lg:gap-0 lg:px-[4%] lg:py-24 xl:px-[6%] bg-[linear-gradient(to_right,rgba(229,231,235,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,0.4)_1px,transparent_1px),radial-gradient(circle_500px_at_10%_100%,rgba(139,92,246,0.2),transparent)] bg-size-[48px_48px,48px_48px,100%_100%,100%_100%]">
         {/* Copy */}
-        <div className="flex w-full flex-col items-center justify-center gap-4 text-center lg:min-h-[90dvh] lg:items-start lg:text-left">
-          <p className="w-min rounded-full border-2 border-primary p-2 text-[10px] font-semibold text-nowrap text-[#8F43E2] sm:text-xs">
+        <Image fill src="/doge-1.webp" alt="Pitbull" className="object-cover top-0 inset-0 -z-10 mix-blend-darken sm:hidden" />
+        <div className="flex w-full flex-col md:items-center justify-center gap-4 sm:text-center lg:min-h-[90dvh] lg:items-start lg:text-left px-4 sm:px-0">
+          <p className="w-min rounded-full border-2 border-primary p-2 text-[10px] font-semibold text-nowrap text-[#8F43E2] text-xs hidden sm:block">
             THE OFFICIAL DIGITAL PEDIGREE REGISTRY
           </p>
-          <h1 className="font-antonio text-4xl font-bold sm:text-5xl xl:text-6xl">
+          <h1 className="font-antonio text-4xl w-1/2 font-bold sm:text-5xl xl:text-6xl text-background sm:text-foreground">
             Register Your Dog. <br />
             <span className="text-primary">Preserve Their Legacy.</span>
           </h1>
-          <p className="mt-2 max-w-md text-muted-foreground lg:max-w-none">
+          <p className="sm:mt-2 max-w-md text-background sm:text-muted-foreground lg:max-w-none text-xs md:text-base">
             Register your dog with Bully Pedex and create a permanent pedigree record in our searchable global database
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:justify-start z-30">
+          <div className="flex flex-wrap flex-col md:flex-row items-start sm:items-center justify-start sm:justify-center gap-1 sm:gap-6 lg:justify-start z-30">
             <Button size="lg" className="relative rounded-full px-6" asChild>
               <Link href="/registry" className="flex items-center gap-4">
                 Register a Dog
-                <div className="absolute top-1/2 -right-2 z-10 -translate-y-1/2 rounded-full bg-foreground p-1">
+                <div className="hidden md:block absolute top-1/2 -right-2 z-10 -translate-y-1/2 rounded-full bg-foreground p-1">
                   <ArrowUpRight />
                 </div>
               </Link>
             </Button>
             <Button size="lg" className="relative gap-4 rounded-full px-4" variant="ghost" asChild>
-              <Link href="/database" className="flex items-center gap-4">
+              <Link href="/database" className="flex items-center gap-4 bg-background! lg:bg-transparent!">
                 <SearchIcon />
                 Search Database
                 <div className="rounded-full bg-primary p-1 text-background">
@@ -48,7 +50,7 @@ export default function Home() {
 
         {/* Hero image */}
         <div className="sm:flex h-full w-full items-center justify-center lg:justify-end lg:pr-4 hidden">
-          <div className="aspect-square w-[75%] rotate-3 overflow-hidden rounded-[10%] sm:w-[55%] lg:w-[70%]">
+          <div className="aspect-square w-full rotate-3 overflow-hidden rounded-[10%] sm:w-[55%] lg:w-[70%]">
             <Image
               src="/doge-1.webp"
               alt="Pitbull"
@@ -61,23 +63,23 @@ export default function Home() {
         </div>
 
         {/* App promo */}
-        <div className="flex w-full flex-col items-center justify-between gap-8 lg:col-span-2 lg:flex-row">
-          <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+        <div className="flex w-full flex-col items-center justify-between gap-8 lg:col-span-2 lg:flex-row px-4 sm:p-0">
+          <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left bg-background sm:bg-transparent w-full py-4  rounded-lg">
             <Image
               src="/mobile-mockup.webp"
               height={448}
               width={448}
               alt="Mobile Mockup"
-              className="h-64 w-min object-contain sm:h-[30dvh]"
+              className="h-64 w-min object-contain sm:h-[30dvh] hidden sm:block"
             />
-            <div className="h-full space-y-4">
-              <h4 className="text-2xl font-bold sm:text-4xl">GET THE BULLY PEDEX APP</h4>
-              <p className="text-muted-foreground">Manage registrations and access your dogs anywhere.</p>
-              <div className="flex items-center justify-center gap-4 sm:justify-start">
+            <div className="h-full space-y-4 ">
+              <h4 className="text-lg font-black sm:font-bold sm:text-4xl flex items-center gap-2"><Badge className="sm:hidden">NEW</Badge> GET THE BULLY PEDEX APP</h4>
+              <p className="text-muted-foreground hidden sm:block">Manage registrations and access your dogs anywhere.</p>
+              <div className="hidden sm:flex items-center justify-center gap-4 sm:justify-start">
                 <div className="flex aspect-square w-min items-center justify-center rounded-full bg-primary p-3 text-background">
                   <DownloadIcon />
                 </div>
-                <div className="flex flex-col text-left font-semibold">
+                <div className=" flex-col text-left font-semibold ">
                   <span className="text-lg">Download the</span>
                   <span className="text-2xl">App now!</span>
                 </div>
@@ -114,7 +116,7 @@ export default function Home() {
           aria-hidden
           height={2000}
           width={1333}
-          className="absolute right-0 bottom-0 -z-10 h-[60dvh] w-auto object-contain opacity-10 lg:h-[90dvh]"
+          className="absolute right-0 bottom-0 -z-10 h-[60dvh] w-auto object-contain opacity-10 lg:h-[90dvh] hidden md:block"
         />
       </header>
       <main className=" w-full">
