@@ -89,7 +89,7 @@ export default function Navbar() {
                 <Sheet>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open menu">
-                            <MenuIcon />
+                            <MenuIcon className="size-6" />
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className="flex w-[85%] flex-col sm:max-w-sm">
