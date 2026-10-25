@@ -13,9 +13,9 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <>
-      <header className="relative isolate grid md:min-h-dvh grid-cols-1 gap-y-2 md:gap-y-10 overflow-x-clip sm:px-4 pt-20 sm:pt-28 pb-2 md:pb-6 sm:pb-12 lg:grid-cols-2 lg:gap-0 lg:px-[4%] lg:py-24 xl:px-[6%] bg-[linear-gradient(to_right,rgba(229,231,235,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,0.4)_1px,transparent_1px),radial-gradient(circle_500px_at_10%_100%,rgba(139,92,246,0.2),transparent)] bg-size-[48px_48px,48px_48px,100%_100%,100%_100%]">
+      <header className="relative isolate grid md:min-h-dvh grid-cols-1 gap-y-2 md:gap-y-10 overflow-x-clip sm:px-4 overflow-hidden pt-20 sm:pt-28 pb-2 md:pb-6 sm:pb-12 lg:grid-cols-2 lg:gap-0 lg:px-[4%] lg:py-24 xl:px-[6%] bg-[linear-gradient(to_right,rgba(229,231,235,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(229,231,235,0.4)_1px,transparent_1px),radial-gradient(circle_500px_at_10%_100%,rgba(139,92,246,0.2),transparent)] bg-size-[48px_48px,48px_48px,100%_100%,100%_100%]">
         {/* Copy */}
-        <Image fill src="/header.webp" alt="Pitbull" className="object-cover top-0 inset-0 -z-10 mix-blend-darken sm:hidden" />
+        <Image fill src="/header.webp" alt="Pitbull" className="object-cover object-top mt-16 top-0 inset-0 -z-10 mix-blend-darken sm:hidden" />
         <div className="flex w-full flex-col md:items-center justify-center gap-2 md:gap-4 sm:text-center lg:min-h-[90dvh] lg:items-start lg:text-left px-4 sm:px-0">
           <p className="w-min rounded-full border-2 border-primary p-2 text-[10px] font-semibold text-nowrap text-[#8F43E2] text-xs hidden sm:block">
             THE OFFICIAL DIGITAL PEDIGREE REGISTRY
