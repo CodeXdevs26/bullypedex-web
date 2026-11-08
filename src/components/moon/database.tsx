@@ -1,97 +1,54 @@
-import React from 'react'
-import { Input } from '../ui/input'
-import { Select, SelectTrigger, SelectValue } from '../ui/select'
-import { Button } from '../ui/button'
-import { InputGroup, InputGroupAddon, InputGroupInput } from '../ui/input-group'
-import { ArrowUpRight, CheckIcon, SearchIcon } from 'lucide-react'
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
-import Image from 'next/image'
-import { Badge } from '../ui/badge'
-
-const dogos = [
-    {
-        image: "/doggo-1.jpg",
-        name: "MAX",
-        desc: "American Bully • Male",
-        reg: "Reg: BPKC-009821",
-        verified: true
-    },
-    {
-        image: "/doggo-2.jpg",
-        name: "MAX",
-        desc: "American Bully • Male",
-        reg: "Reg: BPKC-009821",
-        verified: true
-    },
-    {
-        image: "/doggo-3.jpg",
-        name: "MAX",
-        desc: "American Bully • Male",
-        reg: "Reg: BPKC-009821",
-        verified: true
-    }
-]
+import { ClockIcon, FileTextIcon, TruckIcon } from "lucide-react";
+import Image from "next/image";
 
 export default function Database() {
     return (
-        <section className="bg-primary/10 py-16 lg:py-24">
-            <div className="flex flex-col gap-4 px-4 lg:px-[4%] xl:px-[6%]">
-                <h2 className="text-center text-3xl font-bold">Database</h2>
-                <p className="text-center text-muted-foreground">Search registered dogs and explore documented pedigrees.</p>
-
-                {/* Search bar: stacked on mobile, single row from sm */}
-                <div className="mx-auto flex w-full flex-col gap-2 rounded-xl border border-border bg-background p-2 sm:flex-row sm:items-center lg:w-2/3">
-                    <InputGroup className="min-w-0 gap-2 border-0! shadow-none ring-0! outline-0! sm:flex-1">
-                        <InputGroupInput placeholder="Search by dog name, registration number..." />
-                        <InputGroupAddon>
-                            <SearchIcon />
-                        </InputGroupAddon>
-                    </InputGroup>
-                    <Select>
-                        <SelectTrigger className="w-full sm:w-auto">
-                            <SelectValue placeholder="All Breeds" />
-                        </SelectTrigger>
-                    </Select>
-                    <Button className="w-full rounded-full sm:w-auto">
-                        Search Pedigree
-                    </Button>
+        <section className="py-16 lg:py-24 grid grid-cols-2 gap-6 px-0 md:px-4 lg:px-[4%] xl:px-[6%] pb-[50dvh]!">
+            <div className="space-y-6">
+                <p className="text-primary font-bold">THE BULLY PEDEX DIFFERENCE</p>
+                <h1 className=" text-3xl tracking-tight md:text-4xl font-black md:font-bold  xl:text-6xl text-background md:text-foreground">
+                    No Delays. No Excuses. <br />
+                    <span className="text-primary">We Deliver Results.</span>
+                </h1>
+                <p className="text-muted-foreground">
+                    We collect all required information before approval, <br />
+                    then prepare and ship your paperwork within 5<br />
+                    business days after approval.
+                </p>
+                <div className="w-full grid grid-cols-3 gap-6">
+                    <div className="space-y-4">
+                        <div className="p-4 bg-primary text-background rounded-full aspect-square w-min">
+                            <FileTextIcon className="size-8" />
+                        </div>
+                        <p className="font-semibold">
+                            Information <br />
+                            reviewed before <br />
+                            approval
+                        </p>
+                    </div>
+                    <div className="space-y-4">
+                        <div className="p-4 bg-primary text-background rounded-full aspect-square w-min">
+                            <ClockIcon className="size-8" />
+                        </div>
+                        <p className="font-semibold">
+                            Clear status <br />
+                            updates
+                        </p>
+                    </div>
+                    <div className="space-y-4">
+                        <div className="p-4 bg-primary text-background rounded-full aspect-square w-min">
+                            <TruckIcon className="size-8" />
+                        </div>
+                        <p className="font-semibold">
+                            Trackable shipping
+                        </p>
+                    </div>
                 </div>
-
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {dogos.map((doggo) => (
-                        <Card key={doggo.image}>
-                            <CardHeader>
-                                <Image
-                                    src={doggo.image}
-                                    alt={doggo.name}
-                                    height={240 * 6}
-                                    width={200 * 6}
-                                    className="aspect-video w-full rounded-xl object-cover"
-                                />
-                            </CardHeader>
-                            <CardContent>
-                                <div className="flex items-center justify-between">
-                                    <CardTitle>{doggo.name}</CardTitle>
-                                    <Button variant="ghost" size="icon" className="rounded-full" aria-label={`View ${doggo.name}`}>
-                                        <ArrowUpRight className="size-5" />
-                                    </Button>
-                                </div>
-                                <CardDescription>{doggo.desc}</CardDescription>
-                                <CardDescription>{doggo.reg}</CardDescription>
-                                <CardAction>
-                                    <Badge className="border border-green-600 bg-green-300/20 text-green-700">
-                                        <CheckIcon /> Verified Pedigree
-                                    </Badge>
-                                </CardAction>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
-
-                <div className="mt-8 flex items-center justify-center lg:mt-12">
-                    <Button variant="outline" size="lg" className="gap-2 rounded-full border border-muted-foreground bg-transparent px-4">
-                        View More <ArrowUpRight />
-                    </Button>
+            </div>
+            <div className="w-full relative">
+                <Image src="/cert1.webp" alt="Certificate 1" width={500 * 2} height={300 * 2} className="w-full h-full object-cover" />
+                <div className="">
+                    <Image src="/cert2.webp" alt="Certificate 2" width={500 * 2} height={300 * 2} className="w-4/5 h-full object-contain object-top-left absolute bottom-[-95%] left-[-5%]" />
                 </div>
             </div>
         </section>

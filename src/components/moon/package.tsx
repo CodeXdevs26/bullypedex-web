@@ -1,34 +1,50 @@
 "use client"
 import React from 'react'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card'
-import { ArrowLeftIcon, ArrowUpRight, InfoIcon } from 'lucide-react'
+import { Card, CardContent, CardFooter, CardTitle } from '../ui/card'
+import { ArrowUpRight, CheckIcon, } from 'lucide-react'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
-import Blocks from '../ui/blocks'
-import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
 import AuthGuard from '../extra/auth-guard'
 
 const packages = [
     {
         id: 1,
-        label: "Single Registration",
-        amount: "$149 + shipping",
-        description: "For a dog with no existing registry history",
-        premium: false
+        label: "Permanent Registration",
+        amount: "$40",
+        description: "Three generation pedigree with official registration paperwork.",
+        premium: false,
+        items: [
+            "Official Bully Pedex registration",
+            "Three generation pedigree",
+            "Professionally prepared paperwork",
+            "Mailed to you"
+        ]
     },
     {
         id: 2,
-        label: "Single Registration",
-        amount: "$149 + shipping",
-        description: "For a dog with no existing registry history",
-        premium: false
+        label: "Litter Registration",
+        amount: "$60",
+        description: "Register an entire litter with one application.",
+        premium: false,
+        items: [
+            "Litter pedigree registration",
+            "Multiple puppies on one application",
+            "Professionally prepared paperwork",
+            "Mailed to you"
+        ]
     },
     {
         id: 3,
         label: "Single Registration",
-        amount: "$149 + shipping",
-        description: "For a dog with no existing registry history",
-        premium: true
+        amount: "$149",
+        description: "For dogs without available lineage information.",
+        premium: true,
+        items: [
+            "Single dog registration",
+            "Perfect for pets or unknown lineage",
+            "Professionally prepared paperwork",
+            "Mailed to you"
+        ]
     }
 ]
 
@@ -42,65 +58,41 @@ export default function Package() {
             ref={containerRef}
             className="relative flex w-full flex-col items-center gap-4 bg-transparent px-4 py-20 lg:px-[4%] lg:py-36 xl:px-[6%]"
         >
-            <Blocks
-                activeDivsClass="dark:bg-[#131212] bg-primary/10"
-                divClass="dark:border-[#131212] border-muted-foreground/5"
-                classname="w-full bg-transparent! opacity-60"
-                containerRef={containerRef}
-                activeDivs={{
-                    0: new Set([2, 4, 6]),
-                    1: new Set([0, 8]),
-                    2: new Set([1, 3, 5]),
-                    4: new Set([0, 5, 8]),
-                    5: new Set([2, 4]),
-                    7: new Set([2, 6, 9]),
-                    8: new Set([0, 4]),
-                    9: new Set([5]),
-                    10: new Set([3, 6]),
-                    11: new Set([1, 5]),
-                    12: new Set([7]),
-                    13: new Set([2, 4]),
-                    14: new Set([5]),
-                    15: new Set([1, 6]),
-                }}
-            />
-            <p className="w-min rounded-full border-2 border-primary p-2 px-4 text-xs font-semibold text-nowrap text-[#8F43E2]">
-                💸 Registration Packages
-            </p>
-            <h2 className="text-center text-2xl font-bold sm:text-3xl lg:text-4xl">Choose the Perfect Package</h2>
-            <p className="max-w-md text-center text-muted-foreground lg:max-w-none">
-                All packages include official paperwork, verification and our team support
-            </p>
+            <h2 className="text-center text-2xl font-bold sm:text-3xl lg:text-4xl">Choose the Right Registration.</h2>
 
-            <div className="z-20 mt-4 grid w-full max-w-md grid-cols-1 gap-4 lg:mt-0 lg:max-w-none lg:grid-cols-3">
+
+            <div className="z-20 pt-12 grid w-full max-w-md grid-cols-1 gap-4 lg:mt-0 lg:max-w-none lg:grid-cols-3">
                 {packages.map((pkg) => (
                     <Card
                         key={pkg.id}
                         className={cn(
-                            "rounded-4xl",
-                            pkg.premium
-                                ? "bg-foreground text-background"
-                                : "bg-linear-to-br from-[#6A54E5] via-[#6A54E5] to-[#8F43E2] text-background"
+                            "rounded-4xl border-0! outline-0 ring-0 shadow-lg",
                         )}
                     >
                         <CardContent>
-                            <CardTitle className="text-2xl font-bold xl:text-3xl">{pkg.label}</CardTitle>
-                            <p className="text-lg">{pkg.amount}</p>
-                            <p>{pkg.description}</p>
-                            <p className="flex items-center gap-2 text-sm">
-                                <InfoIcon className="size-4" /> How it works
-                            </p>
+                            <CardTitle className="text-xl font-bold">{pkg.label}</CardTitle>
+                            <p className="text-4xl font-semibold ">{pkg.amount}  <sub className="text-sm font-semibold text-muted-foreground italic">+ shipping</sub></p>
+                            <p className="text-muted-foreground">{pkg.description}</p>
+                            <ul className="mt-4 space-y-6">
+                                {pkg.items.map((item, index) => (
+                                    // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                                    <li key={index} className="flex items-center gap-2">
+                                        <CheckIcon className="size-4 text-primary" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </CardContent>
                         <CardFooter>
                             <AuthGuard withApp>
-                                <Button className="w-full rounded-full bg-foreground! p-6 text-background!">
-                                    Start Registration <ArrowUpRight />
+                                <Button className="w-full py-5 rounded-xl">
+                                    Register Now <ArrowUpRight />
                                 </Button>
                             </AuthGuard>
                         </CardFooter>
                     </Card>
                 ))}
             </div>
-        </section>
+        </section >
     )
 }
