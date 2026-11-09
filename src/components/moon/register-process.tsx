@@ -3,44 +3,44 @@ import React from 'react'
 
 export default function RegisterProcess() {
     return (
-        <section className="py-24 px-0 md:px-6 lg:px-[4%] xl:px-[6%]">
-            <h2 className="text-center text-4xl font-bold">Register in Three Simple Steps</h2>
-            <div className="grid grid-cols-3 gap-6 pt-12">
-                <div className="flex items-center gap-4">
-                    <div className="p-4 bg-primary/5 aspect-square! size-16 flex items-center justify-center rounded-full font-bold text-xl text-primary">1</div>
-                    <div className="p-4 bg-primary/5 aspect-square! size-16 flex items-center justify-center rounded-full font-bold text-xl text-primary">
+        <section className="px-6 py-16 md:px-6 md:py-24 lg:px-[4%] xl:px-[6%]">
+            <h2 className="text-center text-xl font-bold md:text-4xl">Register in Three Simple Steps</h2>
+            <div className="grid grid-cols-3 gap-2 pt-6 md:gap-6 md:pt-12">
+                <div className="flex items-start gap-1 md:items-center md:gap-4">
+                    <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/5 text-xs font-bold text-primary md:size-16 md:p-4 md:text-xl">1</div>
+                    <div className="hidden size-16 shrink-0 items-center justify-center rounded-full bg-primary/5 p-4 font-bold text-xl text-primary md:flex">
                         <FileTextIcon />
                     </div>
-                    <div className="">
-                        <h3 className="font-bold text-lg">Complete Registration</h3>
-                        <p className="text-muted-foreground">
+                    <div>
+                        <h3 className="text-[0.55rem] font-bold leading-tight md:text-lg">Complete Registration</h3>
+                        <p className="text-[0.45rem] leading-tight text-muted-foreground md:text-base">
                             Provide your dog's information and
                             upload the required details.</p>
                     </div>
-                    <ChevronRight className="text-muted-foreground size-8" />
+                    <ChevronRight className="hidden text-muted-foreground md:block md:size-8" />
                 </div>
-                <div className="flex items-center gap-4">
-                    <div className="p-4 bg-primary/5 aspect-square! size-16 flex items-center justify-center rounded-full font-bold text-xl text-primary">2</div>
-                    <div className="p-4 bg-primary/5 aspect-square! size-16 flex items-center justify-center rounded-full font-bold text-xl text-primary">
+                <div className="flex items-start gap-1 md:items-center md:gap-4">
+                    <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/5 text-xs font-bold text-primary md:size-16 md:p-4 md:text-xl">2</div>
+                    <div className="hidden size-16 shrink-0 items-center justify-center rounded-full bg-primary/5 p-4 font-bold text-xl text-primary md:flex">
                         <CheckCircleIcon />
                     </div>
-                    <div className="">
-                        <h3 className="font-bold text-lg">We Review Your
+                    <div>
+                        <h3 className="text-[0.55rem] font-bold leading-tight md:text-lg">We Review Your
                             Application</h3>
-                        <p className="text-muted-foreground">
+                        <p className="text-[0.45rem] leading-tight text-muted-foreground md:text-base">
                             Provide your dog's information and
                             upload the required details.</p>
                     </div>
-                    <ChevronRight className="text-muted-foreground size-8" />
+                    <ChevronRight className="hidden text-muted-foreground md:block md:size-8" />
                 </div>
-                <div className="flex items-center gap-4">
-                    <div className="p-4 bg-primary/5 aspect-square! size-16 flex items-center justify-center rounded-full font-bold text-xl text-primary">3</div>
-                    <div className="p-4 bg-primary/5 aspect-square! size-16 flex items-center justify-center rounded-full font-bold text-xl text-primary">
+                <div className="flex items-start gap-1 md:items-center md:gap-4">
+                    <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary/5 text-xs font-bold text-primary md:size-16 md:p-4 md:text-xl">3</div>
+                    <div className="hidden size-16 shrink-0 items-center justify-center rounded-full bg-primary/5 p-4 font-bold text-xl text-primary md:flex">
                         <TruckIcon />
                     </div>
-                    <div className="">
-                        <h3 className="font-bold text-lg">We Prepare & Ship</h3>
-                        <p className="text-muted-foreground">
+                    <div>
+                        <h3 className="text-[0.55rem] font-bold leading-tight md:text-lg">We Prepare & Ship</h3>
+                        <p className="text-[0.45rem] leading-tight text-muted-foreground md:text-base">
                             After approval, we prepare your
                             registration paperwork and ship
                             within 5 business days.</p>

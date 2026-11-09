@@ -56,36 +56,36 @@ export default function Package() {
     return (
         <section
             ref={containerRef}
-            className="relative flex w-full flex-col items-center gap-4 bg-transparent px-4 py-20 lg:px-[4%] lg:py-36 xl:px-[6%]"
+            className="relative flex w-full flex-col items-center gap-4 bg-transparent px-6 py-16 lg:px-[4%] lg:py-36 xl:px-[6%]"
         >
-            <h2 className="text-center text-2xl font-bold sm:text-3xl lg:text-4xl">Choose the Right Registration.</h2>
+            <h2 className="text-center text-xl font-bold sm:text-3xl lg:text-4xl">Choose the Right Registration.</h2>
 
 
-            <div className="z-20 pt-12 grid w-full max-w-md grid-cols-1 gap-4 lg:mt-0 lg:max-w-none lg:grid-cols-3">
+            <div className="z-20 grid w-full max-w-none grid-cols-3 gap-2 pt-6 lg:mt-0 lg:gap-4 lg:pt-12">
                 {packages.map((pkg) => (
                     <Card
                         key={pkg.id}
                         className={cn(
-                            "rounded-4xl border-0! outline-0 ring-0 shadow-lg",
+                            "rounded-xl border-0! outline-0 ring-0 shadow-lg lg:rounded-4xl",
                         )}
                     >
-                        <CardContent>
-                            <CardTitle className="text-xl font-bold">{pkg.label}</CardTitle>
-                            <p className="text-4xl font-semibold ">{pkg.amount}  <sub className="text-sm font-semibold text-muted-foreground italic">+ shipping</sub></p>
-                            <p className="text-muted-foreground">{pkg.description}</p>
-                            <ul className="mt-4 space-y-6">
+                        <CardContent className="gap-1 px-2 py-2 md:gap-3 md:px-6 md:py-6">
+                            <CardTitle className="text-[0.55rem] font-bold leading-tight md:text-xl">{pkg.label}</CardTitle>
+                            <p className="text-sm font-semibold md:text-4xl">{pkg.amount}  <sub className="text-[0.4rem] font-semibold text-muted-foreground italic md:text-sm">+ shipping</sub></p>
+                            <p className="text-[0.4rem] leading-tight text-muted-foreground md:text-base">{pkg.description}</p>
+                            <ul className="mt-2 space-y-2 md:mt-4 md:space-y-6">
                                 {pkg.items.map((item, index) => (
                                     // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                                    <li key={index} className="flex items-center gap-2">
-                                        <CheckIcon className="size-4 text-primary" />
+                                    <li key={index} className="flex items-start gap-1 text-[0.4rem] leading-tight md:items-center md:gap-2 md:text-base">
+                                        <CheckIcon className="mt-0.5 size-2 shrink-0 text-primary md:mt-0 md:size-4" />
                                         {item}
                                     </li>
                                 ))}
                             </ul>
                         </CardContent>
-                        <CardFooter>
+                        <CardFooter className="px-2 pb-2 md:px-6 md:pb-6">
                             <AuthGuard withApp>
-                                <Button className="w-full py-5 rounded-xl">
+                                <Button className="h-5 w-full rounded-md px-1 text-[0.4rem] md:h-auto md:rounded-xl md:py-5 md:text-base">
                                     Register Now <ArrowUpRight />
                                 </Button>
                             </AuthGuard>

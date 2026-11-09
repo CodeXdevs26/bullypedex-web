@@ -74,8 +74,10 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
                 {/* Desktop/tablet actions (sm+) */}
                 <div className="hidden items-center gap-2 sm:flex">
-                    <Button variant="ghost" size="lg" onClick={() => toast.info("Under development!")}>
-                        Sign in
+                    <Button variant="ghost" size="lg" asChild>
+                        <Link href="/auth/signin">
+                            Sign in
+                        </Link>
                     </Button>
                     <Button size="lg" asChild>
                         <Link href="#">
@@ -123,9 +125,9 @@ export default function Navbar() {
                             <Button
                                 variant="outline"
                                 size="lg"
-                                onClick={() => toast.info("Under development!")}
+                                asChild
                             >
-                                Sign in
+                                <Link href="/auth/signin">Sign in</Link>
                             </Button>
                             <Button size="lg" asChild>
                                 <Link href="#">

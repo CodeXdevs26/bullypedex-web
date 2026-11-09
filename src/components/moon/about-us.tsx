@@ -8,9 +8,8 @@ import { BiDollarCircle } from 'react-icons/bi'
 
 export default function AboutUs() {
     return (
-        <section className="relative isolate grid  grid-cols-1 gap-y-2 md:gap-y-10 overflow-x-clip md:px-4 overflow-hidden pt-20 md:pt-28 pb-2 md:pb-6 lg:grid-cols-2 lg:gap-0 lg:px-[4%] lg:py-24 xl:px-[6%] ">
+        <section className="relative isolate hidden grid-cols-1 gap-y-2 overflow-hidden px-4 pb-2 pt-20 md:grid md:gap-y-10 md:pb-6 md:pt-28 lg:grid-cols-2 lg:gap-0 lg:px-[4%] lg:py-24 xl:px-[6%]">
             {/* Copy */}
-            <Image fill src="/header.webp" alt="Pitbull" className="object-cover object-top mt-16 top-0 inset-0 -z-10 mix-blend-darken md:hidden" />
             <div className="flex w-full flex-col md:items-center justify-center gap-2 md:gap-4 md:text-center lg:items-start lg:text-left px-4 md:px-0">
 
                 <h1 className=" text-3xl tracking-tight md:text-4xl font-black md:font-bold  xl:text-6xl text-background md:text-foreground">

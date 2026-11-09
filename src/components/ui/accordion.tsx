@@ -44,7 +44,7 @@ export default function Accordion({ items = ITEMS }: { items?: typeof ITEMS }) {
             return (
                 <div
                     key={item.id}
-                    className={`rounded-2xl px-6 py-5 transition-all duration-300 ease-out ${open
+                    className={`rounded-xl px-3 py-3 transition-all duration-300 ease-out md:rounded-2xl md:px-6 md:py-5 ${open
                         ? "bg-[#5B4DE3] text-white shadow-[0_18px_40px_-12px_rgba(91,77,227,0.55)]"
                         : "bg-white text-[#1B1740] shadow-[0_8px_24px_-10px_rgba(27,23,64,0.18)] border border-border/50"
                         }`}
@@ -57,11 +57,11 @@ export default function Accordion({ items = ITEMS }: { items?: typeof ITEMS }) {
                         onClick={() => setOpenId(open ? null : item.id)}
                         className="flex w-full items-center justify-between gap-4 text-left focus-visible:outline-none"
                     >
-                        <span className="text-[18px] font-semibold leading-snug tracking-tight">
+                        <span className="text-[0.6rem] font-semibold leading-snug tracking-tight md:text-[18px]">
                             {item.question}
                         </span>
                         <span
-                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors duration-300 ${open
+                            className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md transition-colors duration-300 md:h-9 md:w-9 md:rounded-lg ${open
                                 ? "bg-[#F1EFFD] text-[#5B4DE3]"
                                 : "bg-[#EEEBFC] text-[#5B4DE3]"
                                 }`}
