@@ -27,12 +27,12 @@ export default function Home() {
           </p>
 
           <div className="z-30 flex flex-wrap items-start gap-2 md:flex-row md:items-center md:justify-center md:gap-6 lg:justify-start">
-            <Button size="sm" className="h-7 px-2 text-[0.55rem] md:h-auto md:px-6 md:py-6 md:text-base" asChild>
+            <Button size="sm" className="h-7 px-2 text-[0.55rem] md:h-auto md:px-6 md:py-4 md:text-base" asChild>
               <Link href="/registry" className="flex items-center">
                 Register a Dog <ArrowRight />
               </Link>
             </Button>
-            <Button size="sm" className="relative h-7 gap-1 border-primary px-2 text-[0.55rem] text-primary md:h-auto md:gap-4 md:px-6 md:py-6 md:text-base" variant="outline" asChild>
+            <Button size="sm" className="relative h-7 gap-1 border-primary px-2 text-[0.55rem] text-primary md:h-auto md:gap-4 md:px-6 md:py-4 md:text-base" variant="outline" asChild>
               <Link href="/database" className="flex items-center gap-1 bg-background! lg:gap-4 lg:bg-transparent!">
                 <SearchIcon />
                 Search Database
