@@ -5,6 +5,7 @@ import { ArrowUpRight, CheckIcon, } from 'lucide-react'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
 import AuthGuard from '../extra/auth-guard'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
 
 const packages = [
     {
