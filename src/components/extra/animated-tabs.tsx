@@ -16,6 +16,8 @@ type TabsProps = {
     activeTabClassName?: string;
     tabClassName?: string;
     contentClassName?: string;
+    value: string;
+    onChange: (value: string) => void;
 };
 
 const Tabs = ({
@@ -23,12 +25,21 @@ const Tabs = ({
     containerClassName,
     activeTabClassName,
     tabClassName,
+    contentClassName,
+    value,
+    onChange
 }: TabsProps) => {
     const [activeIdx, setActiveIdx] = useState(0);
 
 
     const handleSelect = (idx: number) => {
         setActiveIdx(idx);
+        if (tabs[idx]) {
+            const selectedTab = tabs[idx];
+            if (selectedTab.value) {
+                onChange(selectedTab.value);
+            }
+        }
     };
 
 
@@ -73,15 +84,17 @@ const Tabs = ({
         </div>
     );
 };
-export default function AnimatedTabMotion({ tabs }: {
+export default function AnimatedTabMotion({ tabs, value, onChange }: {
     tabs: {
         title: any;
         value: string;
-    }[]
+    }[];
+    value: string;
+    onChange: (value: string) => void;
 }) {
     return (
         <div className="w-full mx-auto items-start justify-start bg-accent p-1 rounded-full">
-            <Tabs tabs={tabs} />
+            <Tabs tabs={tabs} value={value} onChange={onChange} />
         </div>
     );
 }

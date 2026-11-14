@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ArrowLeftIcon, ArrowRightIcon, CameraIcon, CheckIcon, ChevronRightIcon } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
@@ -101,7 +102,10 @@ export default function Page() {
                 </Card>
 
                 <div className="">
-                    <Button>Continue <ChevronRightIcon /></Button>
+                    <Button asChild>
+                        <Link href="/registry/apply/photos/info">
+                            Continue <ChevronRightIcon /></Link>
+                    </Button>
                 </div>
             </div>
 
